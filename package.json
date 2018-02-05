@@ -1,0 +1,25 @@
+{
+  "name": "nodemailer-heroku-sendgrid-tutorial",
+  "version": "1.0.0",
+  "description": "Tutorial for setting up nodemailer in heroku with sendrid.",
+  "main": "server.js",
+  "scripts": {
+    "test": "node server.js",
+    "start": "node server.js"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/crisayala16/nodemailer-heroku-sendgrid-tutorial.git"
+  },
+  "author": "Cristopher Ayala Paz",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/crisayala16/nodemailer-heroku-sendgrid-tutorial/issues"
+  },
+  "homepage": "https://github.com/crisayala16/nodemailer-heroku-sendgrid-tutorial#readme",
+  "dependencies": {
+    "body-parser": "^1.18.2",
+    "express": "^4.16.2",
+    "nodemailer": "^4.4.2"
+  }
+}
