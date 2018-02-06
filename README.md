@@ -15,5 +15,5 @@ This tutorial requires [Heroku](https://devcenter.heroku.com/articles/heroku-cli
 
 run the ``` heroku login ``` command and enter your credentials
 
-(public/images/heroku-login.png)
+[heroku-login](./public/images/heroku-login.png)
 
