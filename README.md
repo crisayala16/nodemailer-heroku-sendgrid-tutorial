@@ -21,3 +21,15 @@ After loggin in, run the ``` heroku create <app name>``` command
 
 ![heroku-create](./public/images/heroku-create.png)
 
+### Attach Sendgrid to your heroku app
+
+Run the ``` heroku addons:create sendgrid:starter ``` command
+
+![heroku-addon-sendgrid](./public/images/sendgrid-addon.png)
+
+Run ``` heroku config:get SENDGRID_USERNAME ``` and ``` heroku config:get SENDGRID_PASSWORD ``` to get the SendGrid auth info.
+Make sure you keep this info safe somewhere, you're going to need it in a bit.
+
+![heroku-sendgrid-auth](./public/images/sendgrid-auth.png)
+
+
