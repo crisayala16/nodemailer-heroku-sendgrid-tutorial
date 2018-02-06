@@ -1,7 +1,7 @@
 var express = require('express');
 var bodyParser = require('body-parser');
 var nodeMailer = require('nodemailer');
-
+var auth = require('./config.json');
 var app = express();
 
 var PORT = process.env.PORT || 3000;
