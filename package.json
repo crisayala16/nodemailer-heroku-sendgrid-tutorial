@@ -4,8 +4,8 @@
   "description": "Tutorial for setting up nodemailer in heroku with sendrid.",
   "main": "server.js",
   "scripts": {
-    "test": "node server.js",
-    "start": "node server.js"
+    "test": "nodemon",
+    "start": "nodemon"
   },
   "repository": {
     "type": "git",
