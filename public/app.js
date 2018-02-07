@@ -16,6 +16,7 @@ $(document).ready(function(){
           message: message,
           gif: gif
         }).done((data)=>{
+          console.log(data);
           if(data.success){
             $('#name').val('');
             $('#email').val('');
