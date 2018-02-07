@@ -45,11 +45,9 @@ app.post('/sendEmail', (req, res)=>{
                <img src='${gif}' height='300px'/>`
         }, (err, info)=>{
         if(err){
-            console.log(err);
             return res.send(err);
         }
         else{
-            console.log(info);
             console.log('after info');
             res.status(200).json({
             success: true,
