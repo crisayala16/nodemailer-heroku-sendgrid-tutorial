@@ -52,9 +52,8 @@ This .gitignore file will prevent git from sending certain files with sensitive 
 
 Go inside your .gitignore file and enter node_modules and config.json
 
-![gitignore](./public/images/gitignore-config.png)
-
 **This step is very crucial, sendgrid will suspend your account if you push your sendgrid authentication info to github.**
+![gitignore](./public/images/gitignore-config.png)
 
 ### Set up server route
 
@@ -123,6 +122,27 @@ app.post('/sendEmail', (req, res)=>{
     let message = req.body.message;
     let name = req.body.name;
 
+    transporter.sendMail({
+        from: '<your email>',
+        to: email,
+        subject: `Message from ${name}` ,
+        html: `<h1>What's up homie! ${name} here</h1>
+               <h3>I just wanted to say ...</h3>
+               <h3>${message}</h3>
+               <p>By the way here's your random gif for the day!</p>
+               <img src='${gif}' height='300px'/>`
+        }, (err, info)=>{
+            if(err){
+                res.send(err);
+            }
+            else{
+                console.log('after info');
+                res.status(200).json({
+                success: true,
+                message: 'Email Sent'
+                });
+            }
+        });
     
 });
 ```
