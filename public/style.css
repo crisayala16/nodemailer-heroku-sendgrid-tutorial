@@ -1,0 +1,10 @@
+.parallax-container{
+    height: 13vw;    
+    min-height: 13vw;
+    max-height: 30vw;
+}
+h2{
+    font-size: 5.5vh;
+    text-align: center;
+    padding: 20px;
+}
