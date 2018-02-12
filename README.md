@@ -1,7 +1,7 @@
 # nodemailer-heroku-sendgrid-tutorial
 Tutorial for setting up nodemailer in heroku with sendrid.
 
-# Getting Started
+# Getting Started with the Demo
 
  * Install dependencies ``` npm install ```
  * ``` npm start ```
