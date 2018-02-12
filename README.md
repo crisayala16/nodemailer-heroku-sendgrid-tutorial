@@ -9,7 +9,19 @@ Tutorial for setting up nodemailer in heroku with sendrid.
 
 # Tutorial
 
-This tutorial requires [Heroku](https://devcenter.heroku.com/articles/heroku-cli) and [Node.js](https://nodejs.org/en/download/)
+This tutorial requires [Heroku](https://devcenter.heroku.com/articles/heroku-cli) and [Node.js](https://nodejs.org/en/download/) and an initialized [Github Repo](http://kbroman.org/github_tutorial/pages/init.html).
+
+### Basic App Folder Structure
+```App
+ public
+  --index.html
+  --app.js
+  --style.css
+ .gitignore
+ config.json
+ server.js
+ ```
+
 
 ### Log into Heroku and create
 
@@ -37,6 +49,7 @@ Run ``` heroku config:get SENDGRID_USERNAME ``` and ``` heroku config:get SENDGR
 
 Create a config.json file, replace the 'user name' and 'password' strings with your sendgrid auth info. 
 
+*config.json*
 ```json
 {
 "SENDGRID_USERNAME": "user name",
@@ -60,7 +73,7 @@ Go inside your .gitignore file and enter node_modules and config.json
 Run ``` npm install --save express body-parser nodemailer ``` to install your node modules. 
 
 Set up server modules and their middleware
-
+*server.js*
 ```javascript
 const express = require('express');
 const bodyParser = require('body-parser');
@@ -69,12 +82,18 @@ const auth = require('./config.json');
 
 const app = express();
 
+const PORT = process.env.PORT || 3000;
+
+//This is allowing the app to have access to my public folder
+//This is also serving the index.html file to root '/' path, allowing the index.html file to be seen
+app.use(express.static('./public'));
+
 //This middleware allows our server routes to have parsed json data from the client
 app.use(bodyParser.json({}));
 app.use(bodyParser.urlencoded({ extended: true}));
 app.use(bodyParser.text());
 
-app.listen(3000);
+app.listen(PORT);
 ```
 
 ### Set up nodemailer 
@@ -121,31 +140,79 @@ app.post('/sendEmail', (req, res)=>{
     let email = req.body.email;
     let message = req.body.message;
     let name = req.body.name;
-
+    //Those ${} things that you see are called template literals
+    //They are a way of inserting variables inside strings
     transporter.sendMail({
         from: '<your email>',
         to: email,
         subject: `Message from ${name}` ,
-        html: `<h1>What's up homie! ${name} here</h1>
-               <h3>I just wanted to say ...</h3>
-               <h3>${message}</h3>
-               <p>By the way here's your random gif for the day!</p>
-               <img src='${gif}' height='300px'/>`
+        html: `<h4>${message}</h4>`
         }, (err, info)=>{
             if(err){
                 res.send(err);
             }
             else{
-                console.log('after info');
                 res.status(200).json({
                 success: true,
                 message: 'Email Sent'
                 });
             }
         });
-    
 });
 ```
+
+Nodemailer is all set up, all that's left is the input form and post request.
+
+Here's a simple input form, style yours as you please
+
+*index.html*
+```html
+<form>
+    <label>Name</label>
+    <input type='text' id='name'/>
+    <label>Email</label>
+    <input type='text' id='email'/>
+    <label>Message</label>
+    <textarea id="message" class="materialize-textarea checkInput"></textarea>
+    <button type='submit' id='submit'>Submit</button>
+</form>
+```
+
+Using JQuery, we grab the input values and send a post request to our express route when the submit button is clicked. 
+
+*app.js*
+```js
+$(document).on('click', '#submit', function(event){
+    //This prevents the page from refreshing after the button click
+    event.preventDefault(); 
+
+    //Here we grab the input values
+    let name = $('#name').val();
+    let email = $('#email').val();
+    let message = $('#message').val();
+    
+    //Here we trigger the post request, sending the input values
+    $.post('/sendEmail', {
+        name: name,
+        email: email,
+        message: message,
+    })
+    //When the post request finishes and sends back info
+    //We clear the inputs and alert the email is on its way 
+    .done((data)=>{
+        if(data.success){
+            $('#name').val('');
+            $('#email').val('');
+            $('#message').val('');
+            alert('Email is on its way');
+        }
+    }); 
+});
+```
+
+That's all you need to get started! 
+
+After finishing your work, make sure to push everything up to github and run ```git push heroku master ``` to push up to heroku.
 
 
 
