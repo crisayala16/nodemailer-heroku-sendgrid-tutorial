@@ -9,6 +9,7 @@ Tutorial for setting up nodemailer in heroku with sendrid.
 
 # Tutorial
 
+<<<<<<< HEAD
 This tutorial requires [Heroku](https://devcenter.heroku.com/articles/heroku-cli) and [Node.js](https://nodejs.org/en/download/) and an initialized [Github Repo](http://kbroman.org/github_tutorial/pages/init.html).
 
 ### Basic App Folder Structure
@@ -22,6 +23,9 @@ This tutorial requires [Heroku](https://devcenter.heroku.com/articles/heroku-cli
  server.js
  ```
 
+=======
+This tutorial requires [Heroku](https://devcenter.heroku.com/articles/heroku-cli) and [Node.js](https://nodejs.org/en/download/)
+>>>>>>> a02790ddc55ca3823bdf7d235bbaed3aa20947cd
 
 ### Log into Heroku and create
 
@@ -40,8 +44,12 @@ Run the ``` heroku addons:create sendgrid:starter ``` command
 ![heroku-addon-sendgrid](./public/images/sendgrid-addon.png)
 
 Run ``` heroku config:get SENDGRID_USERNAME ``` and ``` heroku config:get SENDGRID_PASSWORD ``` to get the SendGrid auth info.
+<<<<<<< HEAD
 
 **Make sure you keep this info safe somewhere, you're going to need for the next step.**
+=======
+Make sure you keep this info safe somewhere, you're going to need it in a bit.
+>>>>>>> a02790ddc55ca3823bdf7d235bbaed3aa20947cd
 
 ![heroku-sendgrid-auth](./public/images/sendgrid-auth.png) 
 
@@ -49,7 +57,12 @@ Run ``` heroku config:get SENDGRID_USERNAME ``` and ``` heroku config:get SENDGR
 
 Create a config.json file, replace the 'user name' and 'password' strings with your sendgrid auth info. 
 
+<<<<<<< HEAD
 *config.json*
+=======
+**Make sure to add this file to a .gitignore**
+
+>>>>>>> a02790ddc55ca3823bdf7d235bbaed3aa20947cd
 ```json
 {
 "SENDGRID_USERNAME": "user name",
@@ -57,6 +70,7 @@ Create a config.json file, replace the 'user name' and 'password' strings with y
 }
 ```
 
+<<<<<<< HEAD
 ### Create .gitignore file
 
 Run ``` touch .gitignore ``` to create a .gitignore file
@@ -135,11 +149,36 @@ const transporter = nodemailer.createTransport({
 Create a route in your server to handle user input from the client and start using nodemailer.
 
 *server.js*
+=======
+### Set up server route
+
+Set up server modules and their middleware
+
+```javascript
+var express = require('express');
+var bodyParser = require('body-parser');
+var nodeMailer = require('nodemailer');
+var auth = require('./config.json');
+
+var app = express();
+
+app.listen(3000);
+
+//This middle allows our server routes to have parsed json data from the client
+app.use(bodyParser.json({}));
+app.use(bodyParser.urlencoded({ extended: true}));
+app.use(bodyParser.text());
+```
+
+Create a route in your server to handle user input from the client.
+
+>>>>>>> a02790ddc55ca3823bdf7d235bbaed3aa20947cd
 ```javascript
 app.post('/sendEmail', (req, res)=>{
     let email = req.body.email;
     let message = req.body.message;
     let name = req.body.name;
+<<<<<<< HEAD
     //Those ${} things that you see are called template literals
     //They are a way of inserting variables inside strings
     transporter.sendMail({
@@ -217,6 +256,14 @@ After finishing your work, make sure to push everything up to github and run ```
 
 
 
+=======
+});
+```
+
+### Install Nodemailer and set up config
+
+Install nodemailer with ``` npm install --save nodemailer ```
+>>>>>>> a02790ddc55ca3823bdf7d235bbaed3aa20947cd
 
 
 
