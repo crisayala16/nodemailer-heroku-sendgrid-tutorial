@@ -8,39 +8,42 @@
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/0.100.2/css/materialize.min.css">
     <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
     <link rel="stylesheet" type="text/css" media="screen" href="style.css" />
+    <link rel='shortcut icon' type='image/x-icon' href='/images/favicon.png' />
 </head>
 <body>
-    <!-- Paralax Background -->
-    <div class="parallax-container">
-        <div class="parallax"><img id='par-img' src="./images/mail.jpg"></div>
-    </div>
-    <div class="section white">
-        <div class="row container">
-            <h2 class="header">Send an email to whoever you want</h2>
-            <form class="col s12">
-                <div class="input-field">
-                    <i class="material-icons prefix">account_circle</i>
-                    <input id="name" type="text" class="validate checkInput" required>
-                    <label data-error='please provide your name' for="name">Your Name</label>
-                </div>
-                <div class="input-field">
-                    <i class="material-icons prefix">email</i>
-                    <input id="email" type="tel" class="validate checkInput" required>
-                    <label data-error='please provide the email of the reciever' for="email">Email of the reciever</label>
-                </div>        
-                <div class="input-field">
-                    <i class="material-icons prefix">message</i>                        
-                    <textarea id="message" class="materialize-textarea checkInput" required></textarea>
-                    <label data-error='please provide a message' for="message">Message</label>
-                </div>
-                <button id="submit" type='submit' class="btn waves-effect waves-light">Submit
-                    <i class="material-icons right">send</i>
-                </button>
-            </form>
+    <div class='wrapper'>
+        <!-- Paralax Background -->
+        <div class="parallax-container">
+            <div class="parallax"><img id='par-img' src="./images/mail.jpg"></div>
         </div>
-    </div>
-    <div class="parallax-container">
-        <div class="parallax"><img id='par-img' src="./images/mail.jpg"></div>
+        <div class="section white">
+            <div class="row container">
+                <h2 class="header">Send an email</h2>
+                <form class="col s12">
+                    <div class="input-field">
+                        <i class="material-icons prefix">account_circle</i>
+                        <input id="name" type="text" class="validate checkInput" required>
+                        <label data-error='please provide your name' for="name">Your Name</label>
+                    </div>
+                    <div class="input-field">
+                        <i class="material-icons prefix">email</i>
+                        <input id="email" type="tel" class="validate checkInput" required>
+                        <label data-error='please provide the email of the reciever' for="email">Email of the reciever</label>
+                    </div>        
+                    <div class="input-field">
+                        <i class="material-icons prefix">message</i>                        
+                        <textarea id="message" class="materialize-textarea checkInput" required></textarea>
+                        <label data-error='please provide a message' for="message">Message</label>
+                    </div>
+                    <button id="submit" type='submit' class="btn waves-effect waves-light" disabled>Submit
+                        <i class="material-icons right">send</i>
+                    </button>
+                </form>
+            </div>
+        </div>
+        <div class="parallax-container">
+            <div class="parallax"><img id='par-img' src="./images/mail.jpg"></div>
+        </div>
     </div>
     <!-- JQuery -->
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>

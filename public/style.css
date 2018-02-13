@@ -1,10 +1,31 @@
 .parallax-container{
-    height: 13vw;    
-    min-height: 13vw;
-    max-height: 30vw;
+    height: 25vh;    
 }
 h2{
     font-size: 5.5vh;
     text-align: center;
     padding: 20px;
+}
+.wrapper{
+    min-height: 100vh;
+}
+@media screen and (max-width: 1024px) {
+    .parallax-container{
+        height: 32vh;
+    }
+}
+@media screen and (max-width: 768px) {
+    .parallax-container{
+        height: 28vh;
+    }
+}
+@media screen and (max-width: 414px) {
+    .parallax-container{
+        height: 25vh;
+    }
+}
+@media screen and (max-width: 375px) {
+    .parallax-container{
+        height: 25vh;
+    }
 }
