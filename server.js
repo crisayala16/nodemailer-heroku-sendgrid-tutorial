@@ -35,12 +35,8 @@ app.post('/sendEmail', (req, res)=>{
     transporter.sendMail({
         from: 'nodemailbobthebot@gmail.com',
         to: email,
-        subject: `Message from ${name}` ,
-        html: `<h1>What's up homie! ${name} here</h1>
-               <h3>I just wanted to say ...</h3>
-               <h3>${message}</h3>
-               <h3>By the way here's your random gif for the day!</h3>
-               <img src='${gif}' height='300px'/>`
+        subject: `${name}` ,
+        html: `<h3>${message}</h3>`
         }, (err, info)=>{
             if(err){
                 res.send(err);
